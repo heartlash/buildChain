@@ -21,6 +21,8 @@ describe('Blockchain', ()=>{
 
     it('validates a valid chain', ()=>{
         bc1.addBlock('foo');
+        console.log("see the first chain: ", JSON.stringify(bc.chain));
+        console.log("see the second chain: ", JSON.stringify(bc1.chain));
         expect(bc.isValidChain(bc1.chain)).toBe(true);
     });
 
@@ -38,7 +40,7 @@ describe('Blockchain', ()=>{
     it('replaces the chain with a valid chain', ()=>{
         bc1.addBlock('goo');
         bc.replaceChain(bc1.chain);
-        expect(bc.chain).toEqual(bc1.chain);
+        expect(JSON.stringify(bc.chain)).toEqual(JSON.stringify(bc1.chain));
     });
 
     it('does not replace the chain with one of less than or equal to length', ()=>{
